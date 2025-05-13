@@ -1,0 +1,5 @@
+/target
+/tmp
+static/*
+/plim_front/node_modules
+/plim_front/dist

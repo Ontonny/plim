@@ -1,0 +1,83 @@
+plans:
+  example-native-trigger-activechoice:
+    type: gitlab-native
+    groups: [test, other]
+    gitlab:
+      project_id: 1
+      token_var: TEST_TRIGGER_TOKEN
+      execute_api_type: trigger
+      ref: main
+    views:
+      - text: "boolean_test"
+        type: checkbox
+        key: "TEST_CHECKBOX"
+        value: true
+      - text: "select_test"
+        type: select
+        data: ["Nice", "Bad", "Human", "Animal"]
+        key: "SELLLECT"
+        value: ["Nice", "Bad"]
+      - text: "radio_test"
+        type: radio-dynamic
+        key: "TEST_RADIO"
+        value: "Example[radio_test]"
+        data: ["Male[TEST_CHECKBOX:true,SELLLECT:Nice]", "Female[radio_test,SELLLECT:Bad]", "Example[TEST_CHECKBOX:false]", "Tttest[radio_test]"]
+        referenced_key: [TEST_CHECKBOX,SELLLECT]
+      - text: "input test"
+        type: input-field
+        key: "TEST_INPUTF"
+        value: "123"
+      - text: "password test"
+        type: password-input-field
+        key: "PASDS_TST"
+        value: "456"
+      - text: "hiddent test"
+        type: hidden
+        key: "HIDD_KEY"
+        value: "678"
+      - text: "date-picker test"
+        type: date-picker
+        format: "M/D/YYYY"
+        value: "2024-09-26"
+        key: "DATE_KEY"
+  example-native-trigger-activechoice2:
+    type: gitlab-native
+    groups: [test2]
+    gitlab:
+      project_id: 1
+      token_var: TEST_TRIGGER_TOKEN
+      execute_api_type: trigger
+      ref: main
+    views:
+      - text: "boolean_test"
+        type: checkbox
+        key: "TEST_CHECKBOX"
+        value: true
+      - text: "select_test"
+        type: select
+        data: ["Nice", "Bad", "Human", "Animal"]
+        key: "SELLLECT"
+        value: ["Nice", "Bad"]
+      - text: "radio_test"
+        type: radio-dynamic
+        key: "TEST_RADIO"
+        value: "Example[radio_test]"
+        data: ["Male[TEST_CHECKBOX:true,SELLLECT:Nice]", "Female[radio_test,SELLLECT:Bad]", "Example[TEST_CHECKBOX:false]", "Tttest[radio_test]"]
+        referenced_key: [TEST_CHECKBOX,SELLLECT]
+      - text: "input test"
+        type: input-field
+        key: "TEST_INPUTF"
+        value: "123"
+      - text: "password test"
+        type: password-input-field
+        key: "PASDS_TST"
+        value: "456"
+      - text: "hiddent test"
+        type: hidden
+        key: "HIDD_KEY"
+        value: "678"
+      - text: "date-picker test"
+        type: date-picker
+        format: "M/D/YYYY"
+        value: "2024-09-26"
+        key: "DATE_KEY"

@@ -1,0 +1,45 @@
+plans:
+  example-native-create:
+    name: example-native-create
+    type: gitlab-native
+    groups: [test, other]
+    gitlab:
+      project_id: 1
+      token_var: ADMIN_GL_TOKEN
+      execute_api_type: create
+      ref: main
+    views:
+      - text: "boolean test"
+        type: checkbox
+        key: "TEST_CHECKBOX"
+        value: true
+      - text: "radio test"
+        type: radio
+        key: "TEST_RADIO"
+        data: ["1", "2", "3", "4"]
+        value: "3"
+      - text: "select test"
+        type: select
+        key: "TEST_SELECT"
+        data: ["Male", "Female", "Human", "Animal"]
+        value: "Female"
+      - text: "input test"
+        type: input-field
+        key: "TEST_INPUT"
+        value: "my test input here"
+      - text: "password test"
+        type: password-input-field
+        key: "TEST_PASSWD"
+        value: "pass"
+      - text: "hiddent test"
+        type: hidden
+        key: "TEST_HIDDEN"
+        value: "test test"
+      - text: "hiddent port"
+        type: hidden
+        key: "ansible_port"
+        value: "22"
+      - text: "hiddent user"
+        type: hidden
+        key: "ansible_ssh_user"
+        value: "root"

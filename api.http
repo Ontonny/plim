@@ -1,0 +1,339 @@
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3NDY5NzU4NDcsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQHRlc3QubG9jYWwiLCJmdWxsX25hbWUiOiJOb25lMTExIiwiZGlzYWJsZWQiOmZhbHNlLCJyb2xlcyI6WyJhZG1pbiJdfQ.vkCWfYndb6-NtEZyMRleaP-V4NgaPSAnuQJ2A5dMWSQ
+
+
+
+@backend = https://localhost:3000/api/v1
+# @backend = https://production.host:3000/api/v1
+GET {{ backend }}/plans-list HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
+
+###
+POST {{ backend }}/login HTTP/1.1
+content-type: application/json
+accept: application/json
+
+{ "username": "admin", "password":"test" }
+
+###
+GET {{ backend }}/healthz HTTP/1.1
+content-type: application/json
+accept: application/json
+
+###
+
+GET {{ backend }}/etcd/plans-views HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
+
+### UPDATE KEY
+
+PATCH {{ backend }}/etcd/plan-view/update-key HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
+
+{
+  "etcd_name": "test",
+  "key_path": "/test/key3",
+  "key_value": ["version: 1.1.1"]
+}
+
+### READ VIEW KEY
+POST {{ backend }}/etcd/plan-view/read-key HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
+
+{
+  "etcd_name": "test",
+  "key_path": "/test/key3"
+}
+
+### READ INVENTORY KEY
+POST {{ backend }}/etcd/inventory/read-key HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
+
+{
+  "etcd_name": "test",
+  "key_path": "/ansible/prod/small"
+}
+
+
+###
+
+POST {{ backend }}/etcd/plan-view HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
+
+{
+  "etcd_name": "test",
+  "key_path": "/test/key3",
+  "key_value": ["version: 1.0.0"]
+}
+###
+
+PATCH {{ backend }}/etcd/inventory/update-key HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
+
+{
+  "etcd_name": "test",
+  "key_path": "/ansible/prod/small",
+  "key_value": "dW5ncm91cGVkOgogIGhvc3RzOgogICAgdGVzdC15YW1sLXNlcnZlcjoKICAgIG1haWwuZXhhbXBsZS5jb206CndlYnNlcnZlcnM6CiAgaG9zdHM6CiAgICBmb28uZXhhbXBsZS5jb206CiAgICBiYXIuZXhhbXBsZS5jb206CmRic2VydmVyczoKICBob3N0czoKICAgIG9uZS5leGFtcGxlLmNvbToKICAgIHR3by5leGFtcGxlLmNvbToKICAgIHRocmVlLmV4YW1wbGUuY29tOgp5YW1sc2VydmVyczoKICBob3N0czoKICAgIHRlc3QteWFtbC1zZXJ2ZXI6"
+}
+###
+
+GET {{ backend }}/etcd/inventories HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
+###
+
+GET {{ backend }}/plans/example-native-create-activechoice HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
+###
+
+GET {{ backend }}/plans/example-ansible-create2 HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
+###
+
+GET {{ backend }}/plans/example-ansible-etcd HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{ token }}
+###
+
+GET {{ backend }}/user-list HTTP/1.1
+content-type: application/json
+accept: application/json
+Authorization: Bearer {{ token }}
+
+###
+POST http://gitlab/api/v4/projects/1/pipeline HTTP/1.1
+content-type: application/json
+accept: application/json
+PRIVATE-TOKEN: glpat-TTr9G3yHut_kRxXRgLFh
+
+{"ref":"main","variables":[{"key":"jsonbase64","value":"eyJURVNUX0lOUFVUIjoibXkgdGVzdCBpbnB1dCBoZXJlIiwiVEVTVF9QQVNTV0QiOiJwYXNzIiwiYW5zaWJsZV9wb3J0IjoiMjIiLCJURVNUX1JBRElPIjoiMyIsIlRFU1RfU0VMRUNUIjoiRmVtYWxlIiwiVEVTVF9ISURERU4iOiJ0ZXN0IHRlc3QiLCJhbnNpYmxlX3NzaF91c2VyIjoicm9vdCJ9","variable_type":"file"}]}
+
+# { "ref": "main", "variables": [ {"key": "jsonbase64","variable_type": "file", "value": "eyJCT09MIjogdHJ1ZSwgIlJBRElPIjogWyJNYWxlOlRSVUUiLCAiRmVtYWxlIl0sICJTRUxMIjogWyJNYWxlOlRSVUUiLCAiRmVtYWxlIl0sICJJTlBVVCI6ICIxMjMiLCAiUEFTUyI6ICI0NTYiLCAiSElERCI6ICI2NzgifQ=="} ] }
+
+###
+POST {{ backend }}/ansible/inventory HTTP/1.1
+content-type: application/json
+accept: application/json
+Authorization: Bearer {{ token }}
+
+{ "path": "config/ansible/test2.yml" }
+
+
+###
+POST {{ backend }}/ansible/inventory HTTP/1.1
+content-type: application/json
+accept: application/json
+Authorization: Bearer {{ token }}
+
+{ "plan_name": "example-ansible-remote-yaml" }
+
+###
+POST {{ backend }}/ansible/inventory HTTP/1.1
+content-type: application/json
+accept: application/json
+Authorization: Bearer {{ token }}
+
+{ "plan_name": "example-ansible-remote-ini" }
+
+###
+GET {{ backend }}/user-info HTTP/1.1
+content-type: application/json
+accept: application/json
+Authorization: Bearer {{ token }}
+
+
+### WEBHOOK STATIC
+POST {{ backend }}/webhook/example-ansible-create2/test-static HTTP/1.1
+content-type: application/json
+accept: application/json
+TOKEN: 123456789012
+
+{}
+
+### WEBHOOK DYNAMIC
+POST {{ backend }}/webhook/example-ansible-create2/test-dynamic HTTP/1.1
+content-type: application/json
+accept: application/json
+TOKEN: 123456789012
+
+{
+  "ansible_data": {
+    "playbook": "other_playbook.yml",
+    "inventory": "ansible/prod/small.yml",
+    "backend_inventory": {
+      "type": "local",
+      "file_path": "config/ansible/small.ini"
+    },
+    "limit": ["one"]
+  },
+  "views": [
+    {
+      "text": "boolean test",
+      "type": "checkbox",
+      "key": "WEBHOOK_TEST",
+      "value": "false"
+    },
+    {
+      "text": "boolean test",
+      "type": "checkbox",
+      "key": "WEBHOOK_TEST2",
+      "value": "true"
+    }
+  ]
+}
+
+
+###
+POST {{ backend }}/trigger-pipeline/example-base64-create HTTP/1.1
+content-type: application/json
+accept: application/json
+Authorization: Bearer {{ token }}
+
+{ "json_data": {
+    "TEST_RADIO": "3",
+    "TEST_SELECT": "Female",
+    "TEST_INPUT": "my test input here",
+    "TEST_PASSWD": "pass",
+    "TEST_HIDDEN": "test test",
+    "ansible_port": "22",
+    "ansible_ssh_user": "root"
+}}
+
+###
+POST {{ backend }}/gen-password-hash HTTP/1.1
+content-type: application/json
+accept: application/json
+Authorization: Bearer {{ token }}
+
+{ "password": "test" }
+
+###
+POST {{ backend }}/trigger-pipeline/example-ansible-create2
+content-type: application/json
+accept: application/json
+Authorization: Bearer {{ token }}
+
+{
+  "ansible_data": {
+    "ask_become_pass": null,
+    "ask_pass": null,
+    "backend_inventory": {
+      "type": "local",
+      "file_path": "config/ansible/small.ini"
+    },
+    "become": null,
+    "become_method": null,
+    "become_user": null,
+    "connection": null,
+    "diff": true,
+    "extra_vars": null,
+    "forks": 5,
+    "inventory": "ansible/prod/small.yml",
+    "limit": [
+      "two.example.com",
+      "bar.example.com"
+    ],
+    "list_hosts": null,
+    "list_tags": null,
+    "list_tasks": null,
+    "playbook": "my_playbook.yml",
+    "private_key": "~/.ssh/id_rsa",
+    "remote_user": null,
+    "scp_extra_args": null,
+    "sftp_extra_args": null,
+    "skip_tags": null,
+    "ssh_common_args": null,
+    "ssh_extra_args": null,
+    "start_at_task": null,
+    "syntax_check": false,
+    "tags": [],
+    "timeout": null,
+    "vault_password_file": null,
+    "verbosity": 0
+  },
+  "json_data": {
+    "TEST_CHECKBOX": "true",
+    "TEST_RADIO": "3",
+    "TEST_SELECT": "Female",
+    "TEST_INPUT": "my test input here",
+    "TEST_PASSWD": "pass",
+    "TEST_HIDDEN": "test test",
+    "ansible_port": "22",
+    "ansible_ssh_user": "root"
+  }
+}
+
+###
+POST {{ backend }}/ansible/get-cmd
+content-type: application/json
+accept: application/json
+Authorization: Bearer {{ token }}
+
+{
+  "ansible_data": {
+    "ask_become_pass": null,
+    "ask_pass": null,
+    "backend_inventory": {
+      "type": "gitlab",
+      "project_id": 1,
+      "file_path": "ansible/prod/test.yml",
+      "ref_name": "main",
+      "token_var": "ADMIN_GL_TOKEN"
+    },
+    "become": true,
+    "become_method": null,
+    "become_user": null,
+    "connection": null,
+    "check": true,
+    "diff": true,
+    "extra_vars": null,
+    "forks": 5,
+    "inventory": "ansible/prod/small.yml",
+    "limit": [
+      "two.example.com",
+      "bar.example.com"
+    ],
+    "list_hosts": null,
+    "list_tags": null,
+    "list_tasks": null,
+    "playbook": "my_playbook.yml",
+    "private_key": "~/.ssh/id_rsa",
+    "remote_user": null,
+    "scp_extra_args": null,
+    "sftp_extra_args": null,
+    "skip_tags": null,
+    "ssh_common_args": null,
+    "ssh_extra_args": null,
+    "start_at_task": null,
+    "syntax_check": false,
+    "tags": [],
+    "timeout": null,
+    "vault_password_file": "/bin/cat",
+    "verbosity": 5,
+    "is_inventory_inline": false
+  },
+  "json_data": {
+    "TEST_CHECKBOX": "true",
+    "TEST_RADIO": "3",
+    "TEST_SELECT": "Female",
+    "TEST_INPUT": "my test input here",
+    "TEST_PASSWD": "pass",
+    "TEST_HIDDEN": "test test",
+    "ansible_port": "22",
+    "ansible_ssh_user": "root"
+  }
+}
+
+###
+GET {{ backend }}/gitlab-refs/example-ansible-remote-yaml HTTP/1.1
+content-type: application/json
+accept: application/json
+Authorization: Bearer {{ token }}

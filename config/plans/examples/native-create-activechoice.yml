@@ -1,0 +1,46 @@
+plans:
+  example-native-create-activechoice:
+    name: example-native-create-activechoice
+    type: gitlab-native
+    groups: [test, other]
+    gitlab:
+      project_id: 1
+      token_var: ADMIN_GL_TOKEN
+      execute_api_type: create
+      ref: main
+    views:
+      - text: "boolean_test"
+        type: checkbox
+        key: "TEST_CHECKBOX"
+        value: true
+      - text: "boolean test list"
+        type: checkbox-list
+        keys: ["TEST_C_LIST1", "TEST_C_LIST2", "TEST_C_LIST3", "TEST_C_LIST4", "TEST_C_LIST5"]
+        values: [true, false, true, false, false]
+      - text: "select_test"
+        type: select
+        data: ["Nice", "Bad", "Human", "Animal"]
+        key: "TEST_SELECT"
+        value: "Bad"
+      - text: "radio_test"
+        type: radio-dynamic
+        key: "TEST_RADIO"
+        value: "Example[radio_test]"
+        data: ["Male[TEST_CHECKBOX:true,TEST_SELECT:Nice]", "Female[radio_test,TEST_SELECT:Bad]", "Example[TEST_CHECKBOX:false]", "Tttest[radio_test]"]
+        referenced_key: [TEST_CHECKBOX,TEST_SELECT]
+      - text: "input test"
+        type: input-field
+        key: "TEST_INPUTF"
+        value: "123"
+      - text: "select_test_dynamic"
+        type: select-dynamic
+        key: "TEST_SELECT_DYNAMIC"
+        value: "Nice"
+        data: ["Nice[TEST_CHECKBOX:true,TEST_SELECT:Nice]", "Bad[TEST_CHECKBOX:false,TEST_SELECT:Bad]", "Human[TEST_CHECKBOX:true,TEST_SELECT:Human]", "Animal[TEST_CHECKBOX:false,TEST_SELECT:Animal]"]
+        referenced_key: [TEST_CHECKBOX,TEST_SELECT]
+      - text: "checkbox_test_dynamic"
+        type: checkbox-dynamic
+        key: "TEST_CHECKBOX_DYNAMIC"
+        value: true
+        data: ["TEST_CHECKBOX:false"]
+        referenced_key: [TEST_CHECKBOX]

@@ -1,0 +1,43 @@
+[package]
+name = "plim-rusty"
+version = "0.1.1"
+edition = "2024"
+
+[dependencies]
+serde_with = "3.12.0"
+urlencoding = "2.1.2"
+axum = { version = "0.8.3", features = ["json"] }
+utoipa = { version = "5.3.1" }
+sqlx = { version = "0.8.5", default-features = false, features = ["runtime-tokio-native-tls", "postgres"] }
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+tokio = { version = "1.44.2", features = ["full"] }
+serde_yaml = "0.9.34+deprecated"
+merge = "0.2.0"
+anyhow = "1.0.98"
+config = "0.15.11"
+clap = { version = "4.5.37", features = ["derive", "env"] }
+twelf = { version="0.15.0", default-features = false, features = ["yaml", "env"]}
+thiserror= "2.0.12"
+log = { version = "0.4.27", features = ["kv_unstable_serde"], default-features = false }
+structured-logger = "1.0.3"
+walkdir = "2.5.0"
+yaml-hash = "0.4.5"
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter"]}
+jsonwebtoken = "9.3.1"
+bcrypt = "0.17.0"
+uuid = "1.16.0"
+dotenv = "0.15.0"
+reqwest = { version = "0.12.15", features = ["json"] }
+base64 = "0.22.1"
+configparser = { version = "3.1.0" }
+axum-extra = { version = "0.10.1", features = ["typed-header"]}
+tower = "0.5.2"
+tower-http = { version = "0.6.2", features = ["fs", "cors"] }
+chrono = { version = "0.4.40", features = ["serde"] }
+derive-merge-struct = "0.2.3"
+etcd-client = "0.15.0"
+
+[dev-dependencies]
+mockito = { version = "1.7.0" }

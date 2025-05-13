@@ -1,0 +1,34 @@
+plans:
+  example-ansible-etcd-inventory:
+    type: gitlab-ansible-base64
+    groups: [test,admin, other]
+    ansible:
+      backend_inventory:
+        type: etcd
+        etcd_name: "test"
+        key_path: "/ansible/prod/small"
+      vault_pass_file: ""
+      tags: []
+      limit: []
+      ask_vault_password:
+      check: false
+      diff: true
+      private_key: ~/.ssh/id_rsa
+      playbook: my_playbook.yml
+      inventory: ansible/prod/small.yml
+      syntax_check: false
+      forks: 5
+      verbosity: 0
+    gitlab:
+      project_id: 1
+      token_var: ADMIN_GL_TOKEN # need to pass from system variables to process
+      ref: main
+      execute_api_type: create
+      json_data_key: ansible_base64
+      allow_ref_select: true
+    views:
+      - text: "radio test static"
+        type: radio
+        key: "TEST_RADIO_STATIC"
+        data: ["1", "2", "3", "4"]
+        value: "3"

@@ -1,0 +1,289 @@
+all:
+  hosts:
+    web-01:
+      ansible_host: 10.0.1.1
+    web-02:
+      ansible_host: 10.0.1.2
+    web-03:
+      ansible_host: 10.0.1.3
+    web-04:
+      ansible_host: 10.0.1.4
+    web-05:
+      ansible_host: 10.0.1.5
+    web-06:
+      ansible_host: 10.0.1.6
+    web-07:
+      ansible_host: 10.0.1.7
+    web-08:
+      ansible_host: 10.0.1.8
+    web-09:
+      ansible_host: 10.0.1.9
+    web-10:
+      ansible_host: 10.0.1.10
+    web-11:
+      ansible_host: 10.0.1.11
+    web-12:
+      ansible_host: 10.0.1.12
+    web-13:
+      ansible_host: 10.0.1.13
+    web-14:
+      ansible_host: 10.0.1.14
+    web-15:
+      ansible_host: 10.0.1.15
+    web-16:
+      ansible_host: 10.0.1.16
+    web-17:
+      ansible_host: 10.0.1.17
+    web-18:
+      ansible_host: 10.0.1.18
+    web-19:
+      ansible_host: 10.0.1.19
+    web-20:
+      ansible_host: 10.0.1.20
+    web-21:
+      ansible_host: 10.0.1.21
+    web-22:
+      ansible_host: 10.0.1.22
+    web-23:
+      ansible_host: 10.0.1.23
+    web-24:
+      ansible_host: 10.0.1.24
+    web-25:
+      ansible_host: 10.0.1.25
+    web-26:
+      ansible_host: 10.0.1.26
+    web-27:
+      ansible_host: 10.0.1.27
+    web-28:
+      ansible_host: 10.0.1.28
+    web-29:
+      ansible_host: 10.0.1.29
+    web-30:
+      ansible_host: 10.0.1.30
+    web-31:
+      ansible_host: 10.0.1.31
+    web-32:
+      ansible_host: 10.0.1.32
+    web-33:
+      ansible_host: 10.0.1.33
+    web-34:
+      ansible_host: 10.0.1.34
+    web-35:
+      ansible_host: 10.0.1.35
+    web-36:
+      ansible_host: 10.0.1.36
+    web-37:
+      ansible_host: 10.0.1.37
+    web-38:
+      ansible_host: 10.0.1.38
+    web-39:
+      ansible_host: 10.0.1.39
+    web-40:
+      ansible_host: 10.0.1.40
+    web-41:
+      ansible_host: 10.0.1.41
+    web-42:
+      ansible_host: 10.0.1.42
+    web-43:
+      ansible_host: 10.0.1.43
+    web-44:
+      ansible_host: 10.0.1.44
+    web-45:
+      ansible_host: 10.0.1.45
+    web-46:
+      ansible_host: 10.0.1.46
+    web-47:
+      ansible_host: 10.0.1.47
+    web-48:
+      ansible_host: 10.0.1.48
+    web-49:
+      ansible_host: 10.0.1.49
+    web-50:
+      ansible_host: 10.0.1.50
+    db-01:
+      ansible_host: 10.0.2.1
+    db-02:
+      ansible_host: 10.0.2.2
+    db-03:
+      ansible_host: 10.0.2.3
+    db-04:
+      ansible_host: 10.0.2.4
+    db-05:
+      ansible_host: 10.0.2.5
+    db-06:
+      ansible_host: 10.0.2.6
+    db-07:
+      ansible_host: 10.0.2.7
+    db-08:
+      ansible_host: 10.0.2.8
+    db-09:
+      ansible_host: 10.0.2.9
+    db-10:
+      ansible_host: 10.0.2.10
+    db-11:
+      ansible_host: 10.0.2.11
+    db-12:
+      ansible_host: 10.0.2.12
+    db-13:
+      ansible_host: 10.0.2.13
+    db-14:
+      ansible_host: 10.0.2.14
+    db-15:
+      ansible_host: 10.0.2.15
+    db-16:
+      ansible_host: 10.0.2.16
+    db-17:
+      ansible_host: 10.0.2.17
+    db-18:
+      ansible_host: 10.0.2.18
+    db-19:
+      ansible_host: 10.0.2.19
+    db-20:
+      ansible_host: 10.0.2.20
+    app-01:
+      ansible_host: 10.0.3.1
+    app-02:
+      ansible_host: 10.0.3.2
+    app-03:
+      ansible_host: 10.0.3.3
+    app-04:
+      ansible_host: 10.0.3.4
+    app-05:
+      ansible_host: 10.0.3.5
+    app-06:
+      ansible_host: 10.0.3.6
+    app-07:
+      ansible_host: 10.0.3.7
+    app-08:
+      ansible_host: 10.0.3.8
+    app-09:
+      ansible_host: 10.0.3.9
+    app-10:
+      ansible_host: 10.0.3.10
+    app-11:
+      ansible_host: 10.0.3.11
+    app-12:
+      ansible_host: 10.0.3.12
+    app-13:
+      ansible_host: 10.0.3.13
+    app-14:
+      ansible_host: 10.0.3.14
+    app-15:
+      ansible_host: 10.0.3.15
+    cache-01:
+      ansible_host: 10.0.4.1
+    cache-02:
+      ansible_host: 10.0.4.2
+    cache-03:
+      ansible_host: 10.0.4.3
+    cache-04:
+      ansible_host: 10.0.4.4
+    cache-05:
+      ansible_host: 10.0.4.5
+    lb-01:
+      ansible_host: 10.0.5.1
+    lb-02:
+      ansible_host: 10.0.5.2
+  children:
+    webservers:
+      hosts:
+        web-01:
+        web-02:
+        web-03:
+        web-04:
+        web-05:
+        web-06:
+        web-07:
+        web-08:
+        web-09:
+        web-10:
+        web-11:
+        web-12:
+        web-13:
+        web-14:
+        web-15:
+        web-16:
+        web-17:
+        web-18:
+        web-19:
+        web-20:
+        web-21:
+        web-22:
+        web-23:
+        web-24:
+        web-25:
+        web-26:
+        web-27:
+        web-28:
+        web-29:
+        web-30:
+        web-31:
+        web-32:
+        web-33:
+        web-34:
+        web-35:
+        web-36:
+        web-37:
+        web-38:
+        web-39:
+        web-40:
+        web-41:
+        web-42:
+        web-43:
+        web-44:
+        web-45:
+        web-46:
+        web-47:
+        web-48:
+        web-49:
+        web-50:
+    databases:
+      hosts:
+        db-01:
+        db-02:
+        db-03:
+        db-04:
+        db-05:
+        db-06:
+        db-07:
+        db-08:
+        db-09:
+        db-10:
+        db-11:
+        db-12:
+        db-13:
+        db-14:
+        db-15:
+        db-16:
+        db-17:
+        db-18:
+        db-19:
+        db-20:
+    appservers:
+      hosts:
+        app-01:
+        app-02:
+        app-03:
+        app-04:
+        app-05:
+        app-06:
+        app-07:
+        app-08:
+        app-09:
+        app-10:
+        app-11:
+        app-12:
+        app-13:
+        app-14:
+        app-15:
+    cache:
+      hosts:
+        cache-01:
+        cache-02:
+        cache-03:
+        cache-04:
+        cache-05:
+    loadbalancers:
+      hosts:
+        lb-01:
+        lb-02:

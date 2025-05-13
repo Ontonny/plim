@@ -1,0 +1,16 @@
+ungrouped:
+  hosts:
+    test-yaml-server:
+    mail.example.com:
+webservers:
+  hosts:
+    foo.example.com:
+    bar.example.com:
+dbservers:
+  hosts:
+    one.example.com:
+    two.example.com:
+    three.example.com:
+yamlservers:
+  hosts:
+    test-yaml-server:

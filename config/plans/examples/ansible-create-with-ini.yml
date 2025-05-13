@@ -1,0 +1,93 @@
+plans:
+  example-ansible-create2:
+    type: gitlab-ansible-base64
+    groups: [test,admin, other]
+    ansible:
+      backend_inventory:
+        type: local
+        file_path: "config/ansible/small.ini"
+      vault_pass_file: ""
+      tags: []
+      limit: []
+      ask_vault_password:
+      check: false
+      diff: true
+      private_key: ~/.ssh/id_rsa
+      playbook: my_playbook.yml
+      inventory: ansible/prod/small.yml
+      syntax_check: false
+      forks: 5
+      verbosity: 0
+    gitlab:
+      project_id: 1
+      token_var: ADMIN_GL_TOKEN # need to pass from system variables to process
+      ref: main
+      execute_api_type: create
+      json_data_key: ansible_base64
+      allow_ref_select: true
+    webhooks:
+      - name: "test-static"
+        trigger_token: "TEST_TOKEN"
+        type: static
+        ansible:
+          playbook: my_playbook.yml
+          inventory: ansible/prod/small.yml
+          backend_inventory:
+            type: local
+            file_path: "config/ansible/small.ini"
+          limit: ["all"]
+        views:
+          - text: "boolean test"
+            type: checkbox
+            key: "WEBHOOK_TEST"
+            value: false
+      - name: "test-dynamic"
+        trigger_token: "TEST_TOKEN"
+        type: dynamic
+        ansible:
+          playbook: my_playbook.yml
+          inventory: ansible/prod/small.yml
+          backend_inventory:
+            type: local
+            file_path: "config/ansible/small.ini"
+          limit: ["all"]
+        views:
+          - text: "boolean test"
+            type: checkbox
+            key: "WEBHOOK_TEST"
+            value: false
+    views:
+      - text: "boolean test"
+        type: checkbox
+        key: "TEST_CHECKBOX"
+        value: true
+      - text: "radio test"
+        type: radio
+        key: "TEST_RADIO"
+        data: ["1", "2", "3", "4"]
+        value: "3"
+      - text: "select test"
+        type: select
+        key: "TEST_SELECT"
+        data: ["Male", "Female", "Human", "Animal"]
+        value: "Female"
+      - text: "input test"
+        type: input-field
+        key: "TEST_INPUT"
+        value: "my test input here"
+      - text: "password test"
+        type: password-input-field
+        key: "TEST_PASSWD"
+        value: "pass"
+      - text: "hiddent test"
+        type: hidden
+        key: "TEST_HIDDEN"
+        value: "test test"
+      - text: "hiddent port"
+        type: hidden
+        key: "ansible_port"
+        value: "22"
+      - text: "hiddent user"
+        type: hidden
+        key: "ansible_ssh_user"
+        value: "root"

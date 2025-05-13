@@ -1,0 +1,140 @@
+@import "../node_modules/@blueprintjs/core/lib/scss/variables";
+@import "@blueprintjs/table/lib/css/table.css";
+
+*:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.bp5-control-card .bp5-control.bp5-control.bp5-control  {
+  padding: 0;
+  margin: 0;
+}
+
+.plim-box {
+  background-color: $pt-intent-warning; // Apply success color
+  padding: 10px;
+  border-radius: 7px;
+}
+
+html,
+body {
+  background-color: #181818;
+  /* Dark background */
+  color: #e5e5e5;
+  /* Light text color */
+}
+
+.bp5-dark {
+  --bp-theme-dark: #1e1e1e;
+  --bp-theme-dark-bg: #181818;
+  --bp-theme-dark-text: #e5e5e5;
+  --bp-theme-dark-text-secondary: #b3b3b3;
+
+  /* General Background and Text Colors */
+  background-color: var(--bp-theme-dark-bg);
+  color: var(--bp-theme-dark-text);
+}
+
+.bp5-dark .bp5-button {
+  background-color: #0061f2;
+  /* Primary button color */
+  color: #e5e5e5 !important;
+}
+
+.bp5-dark .bp5-card {
+  background-color: #2d2d2d;
+  /* Card background */
+  color: var(--bp-theme-dark-text);
+}
+
+.bp5-dark .bp5-menu {
+  background-color: #2d2d2d;
+  /* Menu background */
+  color: var(--bp-theme-dark-text);
+}
+
+.bp5-dark .bp5-dialog {
+  background-color: #2d2d2d;
+  /* Dialog background */
+  color: var(--bp-theme-dark-text);
+}
+
+.bp5-dark .bp5-menu-item {
+  color: var(--bp-theme-dark-text);
+}
+
+.absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.docs-panel-stack-example {
+  top: 50%;
+  left: 50%;
+  border: 1px solid red;
+  /* Add border to see the panel container */
+  height: 100vh;
+  /* Ensure it takes up the correct height */
+}
+
+.pipelines-panel {
+  width: 100vw;  /* 100% of the viewport width */
+  height: 100vh; /* 100% of the viewport height */
+  top: 0;
+  left: 0;
+}
+.pipelines-panel {
+  width: 100vw;  /* 100% of the viewport width */
+  height: 100vh; /* 100% of the viewport height */
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.pipelines-panel-content {
+  display: flex;
+  height: 100%;
+  width: 99%;
+}
+
+.docs-panel-stack-contents-example {
+  align-items: center;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+.panel-stack {
+  align-items: center;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex: 1 0 auto;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  overflow: auto;
+}
+
+.panel-wizard-style {
+  display: flex;
+  flex-direction: column; /* Stack panels vertically */
+  flex: 1; /* Expand to fill available space */
+  padding: 10px; /* Padding inside the stack */
+  overflow: hidden; /* Allow scrolling if content overflows */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; // Full viewport height
+}
+
+.dashboard-component {
+  margin-left: 20px; // space for the fixed sidebar
+}

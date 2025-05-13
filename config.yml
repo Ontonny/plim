@@ -1,0 +1,40 @@
+plim:
+  listen_address: "0.0.0.0:3000"
+  jwt_token_duration_hours: 24
+  webhook_token_length: 12
+gitlab:
+  api_endpoint: "http://gitlab/api/v4"
+admins:
+  - admin
+users:
+  "admin":
+    full_name: "None111"
+    email: admin@test.local
+    groups: [admin]
+    hashed_password: "$2b$12$4ukjsg7ReEJI8zlnml9hCex4io.3NUIOeUOW6d1JQIm7CZnUmTedi" # test
+    disabled: false
+  "test":
+    full_name: "None"
+    email: admin@test.local
+    groups: [test, test2]
+    hashed_password: "$2b$12$txOuf4pE1h/iP6u8vyIn2OV9TJxiK4i.eMm14PLFz5emwW5WgyF.6" # 123
+    disabled: false
+  "testme":
+    full_name: "None"
+    email: admin@test.local
+    groups: [test, nogroup, other]
+    hashed_password: "$2b$12$txOuf4pE1h/iP6u8vyIn2OV9TJxiK4i.eMm14PLFz5emwW5WgyF.6" # 123
+    disabled: false
+etcd_data_map:
+  test:
+    address: ["localhost:2379"]
+etcd_configs:
+  plans:
+    etcd_name: "test"
+    key_prefix_path: "/plans"
+  users:
+    etcd_name: "test"
+    key_prefix_path: "/users"
+  ansible_inventories:
+    etcd_name: "test"
+    key_prefix_path: "/ansible"

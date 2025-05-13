@@ -1,0 +1,7 @@
+users:
+  "test-user":
+    full_name: "None"
+    email: admin@test.local
+    groups: [test, other]
+    hashed_password: "$2b$12$CVYwObn2mtZTReIX72UBR.e0zQ9jrPpntLmnwf3n6291Tl37a5cF2"
+    disabled: false
