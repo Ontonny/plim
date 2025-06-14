@@ -109,7 +109,7 @@ const PlanExecutedScreen: React.FC<PanelProps<Panel3Info>> = props => {
     const { executedPipelineData, activePlanData, errorMessage, statusOk } = usePlansStore();
 
     
-    const views = Object.keys(activePlanData?.views).map((view) => (
+    const views = Object.keys(activePlanData?.views || {}).map((view) => (
         <div key={view}>
             {JSON.stringify(activePlanData?.views[view])}
         </div>
@@ -122,7 +122,7 @@ const PlanExecutedScreen: React.FC<PanelProps<Panel3Info>> = props => {
     const [collapsePlanViewsIsOpen, setCollapsePlanViewsIsOpen] = React.useState(false);
     const pipelineData = executedPipelineData ? (
         <div>
-            {executedPipelineData?.url && <a href={executedPipelineData?.url}>OPEN PIPELINE IN GITLAB - {executedPipelineData?.url}</a>}
+            {executedPipelineData?.url && <a target="_blank" rel="noopener noreferrer" href={executedPipelineData?.url}>OPEN PIPELINE IN GITLAB - {executedPipelineData?.url}</a>}
             {executedPipelineData && <Pre key="pipelineData">
                 ref: {executedPipelineData.ref} <br/>
                 status: {executedPipelineData.status} <br/>

@@ -7,10 +7,10 @@ RUN apt update && apt install -y \
 	git \
 	llvm-dev \
 	libclang-dev \
-  	libssl-dev \
-    make \
-    pkg-config \
-		protobuf-compiler
+	libssl-dev \
+	make \
+	pkg-config \
+	protobuf-compiler
 RUN cargo install just
 WORKDIR /app
 COPY . /app
@@ -35,8 +35,8 @@ RUN apt-get update && \
 # Copy built binary from builder
 COPY --from=rust_build /app/target/release/plim-rusty .
 COPY --from=react_build /app/plim_front/dist ./static
-COPY ./config ./config
-COPY ./config.yml ./config.yml
+# COPY ./config ./config
+# COPY ./config.yml ./config.yml
 
 # Set the startup command
 # CMD ["./app"]
