@@ -1,4 +1,4 @@
-ARG VITE_PLIM_BACKEND_URL=https://production.host:3001/api/v1
+ARG VITE_PLIM_BACKEND_URL=https://production-plim-backend.host:3001/api/v1
 
 FROM rust:1.86-bullseye as rust_build
 RUN apt update && apt install -y \ 
