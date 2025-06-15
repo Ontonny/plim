@@ -1,22 +1,26 @@
+# open https://localhost:3000/ to see the frontend
 services:
-  # nginx:
-  #   build: ./nginx
-  #   ports:
-  #     - "3001:9999"
-  #   networks:
-  #   - gitlab-network
-  # backend:
-  #   hostname: 'backend'
-  #   command: ["./plim-rusty"]
-  #   build: .
-  #   environment:
-  #     ADMIN_GL_TOKEN: "glpat-TTr9G3yHut_kRxXRgLFh"
-  #     TOKEN_SECRET: "your secret"
-  #   networks:
-  #     - gitlab-network
-  #   volumes:
-  #     - ./config:/app/config
-  #     - ./config.yml:/app/config.yml
+  nginx:
+    build: ./nginx
+    ports:
+      - "3000:3000"
+    networks:
+    - gitlab-network
+    depends_on:
+      - backend
+  backend:
+    image: ghcr.io/ontonny/plim:latest
+    hostname: 'backend'
+    build: .
+    environment:
+      ADMIN_GL_TOKEN: "glpat-TTr9G3yHut_kRxXRgLFh"
+      TOKEN_SECRET: "your secret"
+      RUST_BACKTRACE: 1 
+    networks:
+      - gitlab-network
+    volumes:
+      - ./config:/app/config
+      - ./config.yml:/app/config.yml
   etcd:
     image: bitnami/etcd:3.5.10
     environment:
