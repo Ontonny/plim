@@ -1,4 +1,4 @@
-ARG VITE_PLIM_BACKEND_URL=https://production.host:3001/api/v1
+ARG VITE_PLIM_BACKEND_URL=https://localhost:3000/api/v1
 
 FROM rust:1.86-bullseye as rust_build
 RUN apt update && apt install -y \ 
@@ -35,6 +35,8 @@ RUN apt-get update && \
 # Copy built binary from builder
 COPY --from=rust_build /app/target/release/plim-rusty .
 COPY --from=react_build /app/plim_front/dist ./static
+
+CMD ["./plim-rusty"]
 # COPY ./config ./config
 # COPY ./config.yml ./config.yml
 
