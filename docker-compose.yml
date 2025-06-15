@@ -1,4 +1,5 @@
 # open https://localhost:3000/ to see the frontend
+# open http://localhost:8080/etcdkeeper/ to see the etcdkeeper ui
 services:
   nginx:
     build: ./nginx
@@ -22,7 +23,9 @@ services:
       - ./config:/app/config
       - ./config.yml:/app/config.yml
   etcd:
+    hostname: 'etcd'
     image: bitnami/etcd:3.5.10
+    command: /opt/bitnami/scripts/etcd/entrypoint.sh /opt/bitnami/scripts/etcd/run.sh
     environment:
       ALLOW_NONE_AUTHENTICATION: "yes"
     ports:
@@ -30,14 +33,22 @@ services:
       - "2380:2380"
     networks:
       - gitlab-network
-# localhost:8080/etcdkeeper/
+  etcd_migration:
+    image: bitnami/etcd:3.5.10
+    command: sh /etcd_migrations/run.sh
+    volumes:
+      - ./etcd_migrations:/etcd_migrations
+    networks:
+      - gitlab-network
   etcd-ui:
     image:  evildecay/etcdkeeper:v0.7.6
+    command: /bin/sh -c ./etcdkeeper.bin -h 127.0.0.1 -p 8080
     ports:
       - "8080:8080"
     networks:
       - gitlab-network
-      
+
+
 networks:
   gitlab-network:
     name: gitlab-network

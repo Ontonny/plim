@@ -27,7 +27,7 @@ users:
     disabled: false
 etcd_data_map:
   test:
-    address: ["localhost:2379"]
+    address: ["etcd:2379"]
 etcd_configs:
   plans:
     etcd_name: "test"
