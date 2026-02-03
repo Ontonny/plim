@@ -26,3 +26,13 @@ etcd_migrations:
 	bash -c "cd etcd_migrations && sh run.sh"
 front_run_dev:
 	export VITE_PLIM_BACKEND_URL=http://localhost:3001/api/v1 && cd ./plim_front && npm run dev
+test:
+	cargo test
+test_front:
+	cd ./plim_front && npm test
+test_all:
+	just test && just test_front
+test_watch:
+	cargo test --watch
+test_front_watch:
+	cd ./plim_front && npm test -- --watch

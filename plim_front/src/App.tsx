@@ -7,7 +7,7 @@ import '@blueprintjs/icons/lib/css/blueprint-icons.css';
 import './styles.scss'
 import PlansWizard from './pages/PipelinesWizard.tsx';
 import LoginForm from './pages/LoginForm.tsx'
-import { useAuthenticationStore, useMenuStore } from './store.ts';
+import { useAuthenticationStore, useMenuStore } from './store';
 import GenUserPassword from './pages/GenUserPassword.tsx';
 import Footer from './components/Footer.tsx';
 import LogsTable from './pages/LogsTable.tsx';

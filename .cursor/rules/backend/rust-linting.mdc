@@ -1,0 +1,38 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Use clippy and rustfmt for linting and formatting in all Rust files
+globs:
+  - "src/**/*.rs"
+  - "Cargo.toml"
+alwaysApply: true
+---
+
+- Always run `cargo clippy` before committing to check for common mistakes, inefficiencies, or anti-patterns.
+- If `clippy` suggests fixes that are safe, you can auto-apply them with:
+  ```bash
+  cargo clippy --fix --allow-dirty
+  ```
+
+* Prefer using `#[deny(clippy::all)]` and `#[warn(clippy::pedantic)]` in `main.rs` or `lib.rs` to enforce stricter checks.
+* For formatting, always run:
+
+  ```bash
+  cargo fmt
+  ```
+
+  This ensures all code follows standardized Rust style rules.
+* If a file consistently triggers clippy warnings that aren't actionable, consider annotating with:
+
+  ```rust
+  #![allow(clippy::<warning_name>)]
+  ```
+
+  but document why the warning is ignored.
+* The `rustfmt.toml` file should be respected if present. Assume formatting preferences come from it.
+* Never leave `clippy` or `rustfmt` warnings unresolved in production code.
+
+@rust-linting

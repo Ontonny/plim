@@ -1,0 +1,25 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: General documentation standards for Rust CLI projects
+globs:
+  - "src/**/*.rs"
+  - "README.md"
+  - "Cargo.toml"
+alwaysApply: true
+---
+
+- Every `pub` function, struct, enum, and trait should have a `///` doc comment.
+- Use Markdown syntax in doc comments to format examples and lists.
+- Prefer code examples in doc comments for public APIs.
+- Top-level modules should begin with a `//!` module-level description.
+- Use `#[doc(hidden)]` only for internal APIs not meant for consumption.
+- Keep `README.md` updated with installation, usage, and contribution sections.
+- Include CLI example usage in `README.md` for quick access.
+- Add `badges` for crates.io, docs.rs, and CI status to the top of the `README.md`.
+- Include a `LICENSE` file and mention license clearly in `Cargo.toml`.
+
+@rust-docs

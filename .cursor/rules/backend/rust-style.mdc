@@ -1,0 +1,24 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Standard Rust coding practices for all CLI source files
+globs:
+  - "src/**/*.rs"
+alwaysApply: true
+---
+
+- Use `snake_case` for function names, variable names, and file names.
+- Always include explicit `use` imports — avoid wildcard imports (`use foo::*`).
+- Group `use` statements into standard → external → internal (crate) order.
+- Prefer `Result<T, E>` return types and bubble up errors with `?`.
+- Avoid using `unwrap()` or `expect()` in production logic; prefer safe error handling.
+- Document all `pub` functions with `///` doc comments.
+- Write small functions with single-responsibility logic.
+- Use `match` or `if let` instead of excessive `.unwrap_or_else` for control flow clarity.
+- Prefer `clippy` suggestions and keep the linter warning-free.
+- Keep `main.rs` minimal — move logic into modules.
+
+@rust-style

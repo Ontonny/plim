@@ -1,0 +1,46 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: Instructs the agent how to install new Rust dependencies with cargo
+globs:
+  - "Cargo.toml"
+  - "src/**/*.rs"
+alwaysApply: true
+---
+
+- When adding a new crate (Rust dependency), always use the `cargo add` command.
+- **By default, always use the latest stable version** unless the user explicitly requests a specific version.
+  ```bash
+  cargo add anyhow
+  ````
+
+* Only add an explicit version (e.g., `@1.0`) if:
+
+  * The user asks for a specific version
+  * A compatibility issue requires it
+* For crates with optional features, include them using:
+
+  ```bash
+  cargo add inquire --features fuzzy
+  ```
+* Group related crate additions in a single command when appropriate:
+
+  ```bash
+  cargo add console indicatif walkdir
+  ```
+* Prefer `cargo add` over manual edits to `Cargo.toml` to ensure proper formatting and resolution.
+* For development/test-only dependencies, use the `--dev` flag:
+
+  ```bash
+  cargo add rstest --dev
+  ```
+* After adding dependencies, always verify with:
+
+  ```bash
+  cargo check
+  ```
+
+@rust-general
