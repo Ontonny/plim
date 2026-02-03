@@ -1,0 +1,66 @@
+# Cargo configuration for Rust toolchain
+# This file configures cargo, rustc, and related tools
+
+[build]
+# Use all available CPU cores for parallel compilation
+# jobs defaults to the number of CPU cores if not specified
+# jobs = 4  # Uncomment and set a specific number if needed
+
+# Target directory for build artifacts
+# target-dir = "target"
+
+# Incremental compilation (enabled by default)
+# incremental = true
+
+# Build script output directory
+# out-dir = "target/debug/build"
+
+[alias]
+# Useful cargo aliases
+# Run clippy with all warnings
+clippy-all = "clippy -- -W clippy::all -W clippy::pedantic -W clippy::nursery -W clippy::cargo"
+# Run clippy and fix issues automatically
+clippy-fix = "clippy --fix --allow-dirty"
+# Format and check
+fmt-check = "fmt --check"
+# Run all checks
+check-all = "fmt --check && clippy && test"
+
+[target.'cfg(all())']
+# Rust flags for all targets
+rustflags = [
+    # Enable warnings as errors in CI (uncomment for CI)
+    # "-D", "warnings",
+]
+
+# Clippy configuration
+# Note: clippy.toml in the project root is also used
+[lints.clippy]
+# You can override clippy settings here if needed
+# deny = ["clippy::unwrap_used"]
+
+[lints.rust]
+# Rust compiler lints
+# deny = ["unsafe_code"]
+
+# Network configuration
+[net]
+# Git fetch with cargo
+git-fetch-with-cli = false
+
+# Retry configuration
+retry = 2
+
+# Registry configuration
+[registry]
+# Default registry
+default = "crates-io"
+
+# Source replacement (useful for mirrors)
+# [source.crates-io]
+# replace-with = "mirror"
+
+# Environment variables
+[env]
+# Set RUST_BACKTRACE for better error messages
+# RUST_BACKTRACE = "1"

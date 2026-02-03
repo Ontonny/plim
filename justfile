@@ -36,3 +36,17 @@ test_watch:
 	cargo test --watch
 test_front_watch:
 	cd ./plim_front && npm test -- --watch
+lint:
+	cargo clippy -- -W clippy::pedantic -W clippy::nursery -W clippy::cargo
+lint_front:
+	cd ./plim_front && npm run lint
+lint_all:
+	just lint && just lint_front
+fmt:
+	cargo fmt
+fmt_check:
+	cargo fmt --check
+fmt_front:
+	cd ./plim_front && npm run lint -- --fix
+fmt_all:
+	just fmt && just fmt_front

@@ -1,0 +1,9 @@
+# Clippy configuration for best practices
+# This file configures rust-clippy thresholds and behavior settings
+# Note: Lint enable/disable is configured in Cargo.toml under [lints.clippy]
+
+# Configure complexity thresholds
+cognitive-complexity-threshold = 30
+too-many-arguments-threshold = 7
+type-complexity-threshold = 10
+too-many-lines-threshold = 500
